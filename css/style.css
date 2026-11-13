@@ -19,7 +19,7 @@
   --display: 'Space Grotesk', system-ui, sans-serif;
   --body:    'Inter', system-ui, sans-serif;
 
-  --wrap: 1160px;
+  --wrap: 1000px;
   --gutter: 20px;
   --radius: 28px;
 }
@@ -29,7 +29,7 @@
 html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--body);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.55;
   background: var(--paper);
   color: var(--ink);
@@ -47,7 +47,7 @@ button, input, textarea { font: inherit; color: inherit; }
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
-.band { padding-block: clamp(56px, 8vw, 104px); }
+.band { padding-block: clamp(44px, 6.5vw, 84px); }
 .band-rule { border-top: 1px solid var(--rule); }
 
 .red { color: var(--red); }
@@ -63,8 +63,8 @@ button, input, textarea { font: inherit; color: inherit; }
 .h2 {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
-  line-height: 1.08;
+  font-size: clamp(1.5rem, 3vw, 2.125rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
   max-width: 20em;
 }
@@ -73,12 +73,12 @@ button, input, textarea { font: inherit; color: inherit; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  min-height: 52px;
-  padding: 12px 24px;
+  min-height: 46px;
+  padding: 10px 20px;
   border: 2px solid var(--ink);
   border-radius: 999px;
   font-weight: 600;
-  font-size: 1.0625rem;
+  font-size: 1rem;
   text-decoration: none;
   cursor: pointer;
   transition: background-color .15s ease, color .15s ease, border-color .15s ease;
@@ -96,13 +96,13 @@ button, input, textarea { font: inherit; color: inherit; }
 /* the red "first diagnosis free" sticker */
 .sticker {
   display: inline-block;
-  padding: 14px 22px;
+  padding: 12px 18px;
   background: var(--red);
   color: var(--white);
   border-radius: 14px;
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.125rem, 2vw, 1.4375rem);
+  font-size: clamp(1rem, 1.7vw, 1.1875rem);
   line-height: 1.2;
   text-align: center;
   transform: rotate(-4deg);
@@ -155,7 +155,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .hero h1 {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(2.5rem, 10.6vw, 6.25rem);
+  font-size: clamp(2.125rem, 8.6vw, 4.75rem);
   line-height: 0.98;
   letter-spacing: -0.035em;
   hyphens: manual;
@@ -167,42 +167,42 @@ button, input, textarea { font: inherit; color: inherit; }
   margin-top: clamp(20px, 3vw, 32px);
 }
 .lede {
-  font-size: clamp(1.1875rem, 2.3vw, 1.625rem);
-  line-height: 1.35;
+  font-size: clamp(1.0625rem, 1.9vw, 1.3125rem);
+  line-height: 1.4;
   max-width: 31em;
 }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .hero .sticker { align-self: flex-start; margin-left: 6px; }
 
 /* ============ 6. DUO ============ */
-.duo { display: grid; gap: 40px 28px; }
+.duo { display: grid; gap: 32px 20px; }
 .duo-figure {
   position: relative;
   border-radius: var(--radius);
   overflow: hidden;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 8 / 7;
   background: #9CC3E6;
 }
 .duo-figure img { width: 100%; height: 100%; object-fit: cover; }
-.duo-figure .pos-marmot { object-position: 50% 45%; }
-.duo-figure .pos-sheep  { object-position: 50% 58%; }
+.duo-figure .pos-marmot { object-position: 50% 48%; }
+.duo-figure .pos-sheep  { object-position: 50% 56%; }
 .duo-figure .label {
   position: absolute;
-  top: 18px; left: 18px;
-  padding: 8px 16px;
+  top: 14px; left: 14px;
+  padding: 6px 14px;
   background: var(--white);
   border-radius: 999px;
 }
 .duo h2 {
-  margin-top: 20px;
+  margin-top: 16px;
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.5rem, 2.8vw, 2.125rem);
+  font-size: clamp(1.1875rem, 2.2vw, 1.625rem);
   line-height: 1.12;
   letter-spacing: -0.015em;
   max-width: 14em;
 }
-.duo p { margin-top: 10px; max-width: 26em; font-size: 1.125rem; }
+.duo p { margin-top: 8px; max-width: 26em; }
 
 /* ============ 7. ALSO ============ */
 .also { display: grid; gap: 24px; }
@@ -215,7 +215,7 @@ button, input, textarea { font: inherit; color: inherit; }
   border-radius: 999px;
   background: var(--white);
   font-weight: 600;
-  font-size: 1.0625rem;
+  font-size: 1rem;
 }
 .also-list p { margin-top: 10px; color: var(--muted); }
 
@@ -229,12 +229,12 @@ button, input, textarea { font: inherit; color: inherit; }
   border-top: 2px solid var(--ink);
 }
 .ways-list svg { width: 28px; height: 28px; grid-row: span 2; margin-top: 2px; }
-.ways-list h3 { font-family: var(--display); font-weight: 700; font-size: 1.25rem; line-height: 1.2; }
+.ways-list h3 { font-family: var(--display); font-weight: 700; font-size: 1.125rem; line-height: 1.2; }
 .ways-list p { color: var(--muted); grid-column: 2; }
 
 /* ============ 9. ABOUT ============ */
 .about { display: grid; gap: 24px; }
-.about-text { max-width: 36em; font-size: 1.125rem; }
+.about-text { max-width: 36em; font-size: 1.0625rem; }
 .about-text p + p { margin-top: 1em; }
 .about-text a { text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 
@@ -252,7 +252,7 @@ button, input, textarea { font: inherit; color: inherit; }
   margin-top: 6px;
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.75rem, 4.4vw, 2.75rem);
+  font-size: clamp(1.5rem, 3.6vw, 2.25rem);
   line-height: 1.1;
   letter-spacing: -0.02em;
 }
@@ -263,7 +263,7 @@ button, input, textarea { font: inherit; color: inherit; }
 @media (hover: hover) { .contact-panel .btn-line:hover { background: var(--white); color: var(--ink); } }
 .contact-panel :focus-visible { outline-color: var(--white); }
 .contact-note { margin-top: 28px; }
-.contact-note .sticker { font-size: 1.125rem; }
+.contact-note .sticker { font-size: 1rem; }
 
 .contact-form {
   display: grid;
@@ -272,7 +272,7 @@ button, input, textarea { font: inherit; color: inherit; }
   background: var(--coal);
   border-radius: 20px;
 }
-.contact-form h3 { font-family: var(--display); font-weight: 700; font-size: 1.375rem; }
+.contact-form h3 { font-family: var(--display); font-weight: 700; font-size: 1.25rem; }
 .field { display: grid; gap: 6px; }
 .field label { font-weight: 600; font-size: 0.9375rem; }
 .field input, .field textarea {
@@ -296,14 +296,14 @@ button, input, textarea { font: inherit; color: inherit; }
 .tearoff {
   display: flex;
   flex-wrap: wrap;
-  height: 196px;
+  height: 176px;
   overflow: hidden;
   border-top: 2px dashed var(--ink);
   background: var(--white);
 }
 .tearoff a {
-  flex: 1 0 92px;
-  height: 196px;
+  flex: 1 0 84px;
+  height: 176px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -323,9 +323,9 @@ button, input, textarea { font: inherit; color: inherit; }
   line-height: 1.25;
   white-space: nowrap;
 }
-.tearoff b { font-family: var(--display); font-weight: 700; font-size: 0.9375rem; color: var(--red); }
-.tearoff strong { font-family: var(--display); font-weight: 700; font-size: 1.0625rem; }
-.tearoff small { font-size: 0.8125rem; }
+.tearoff b { font-family: var(--display); font-weight: 700; font-size: 0.875rem; color: var(--red); }
+.tearoff strong { font-family: var(--display); font-weight: 700; font-size: 1rem; }
+.tearoff small { font-size: 0.75rem; }
 @media (hover: hover) {
   .tearoff a:hover { transform: rotate(2.5deg) translateY(8px); background: var(--paper); }
 }
@@ -347,7 +347,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .soon-fr {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.625rem, 5.6vw, 3.5rem);
+  font-size: clamp(1.375rem, 4.4vw, 2.5rem);
   line-height: 1.05;
   letter-spacing: -0.025em;
 }
@@ -357,7 +357,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .soon-close {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(2rem, 6.4vw, 4.25rem);
+  font-size: clamp(1.625rem, 4.8vw, 3rem);
   line-height: 1.05;
   letter-spacing: -0.03em;
 }
@@ -379,10 +379,13 @@ button, input, textarea { font: inherit; color: inherit; }
 }
 
 /* ============ 13. BREAKPOINTS ============ */
+@media (min-width: 480px) {
+  .duo { grid-template-columns: 1fr 1fr; }
+}
 @media (min-width: 640px) {
   :root { --gutter: 32px; }
   .header-phone { display: block; }
-  .duo { grid-template-columns: 1fr 1fr; }
+  .duo { gap: 36px 28px; }
   .also-list { grid-template-columns: 1fr 1fr; }
   .ways-list { grid-template-columns: 1fr 1fr; }
 }
