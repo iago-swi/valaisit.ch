@@ -1,6 +1,20 @@
 RewriteEngine On
 RewriteBase /
 
+# ── COMING SOON MODE ─────────────────────────────────────────────────────────
+# While the service is not open yet, visitors only see coming-soon.html:
+#   - valaisit.ch/ shows the teaser (the address stays valaisit.ch/)
+#   - every other page (/de/, /fr/, contact.php …) is sent back to valaisit.ch/
+#   - css, images and assets stay reachable, the teaser needs them
+# TO OPEN THE FULL SITE: delete this block, down to "END COMING SOON MODE".
+RewriteCond %{REQUEST_URI} !^/(css|images|assets)/
+RewriteCond %{REQUEST_URI} !^/coming-soon\.html$
+RewriteCond %{REQUEST_URI} !^/?$
+RewriteRule ^ / [R=302,L]
+
+RewriteRule ^$ coming-soon.html [L]
+# ── END COMING SOON MODE ─────────────────────────────────────────────────────
+
 # ── Language redirect (root only) ────────────────────────────────────────────
 # Browser prefers French → /fr/ ; everything else → /de/ (Guttet is German-speaking).
 # R=302 (not 301) so browsers don't cache the choice permanently.
