@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="de-CH">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ValaisIT.ch</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<!-- Fallback only: on the server, .htaccess already redirects by browser language. -->
+<script>
+  var lang = (navigator.language || 'de').toLowerCase();
+  location.replace(lang.indexOf('fr') === 0 ? 'fr/index.html' : 'de/index.html');
+</script>
+<noscript><meta http-equiv="refresh" content="0; url=de/index.html"></noscript>
+</head>
+<body>
+<p><a href="de/index.html">Deutsch</a> · <a href="fr/index.html">Français</a></p>
+</body>
+</html>

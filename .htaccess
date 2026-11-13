@@ -1,0 +1,15 @@
+RewriteEngine On
+RewriteBase /
+
+# ── Language redirect (root only) ────────────────────────────────────────────
+# Browser prefers French → /fr/ ; everything else → /de/ (Guttet is German-speaking).
+# R=302 (not 301) so browsers don't cache the choice permanently.
+RewriteCond %{REQUEST_URI} ^/?$
+RewriteCond %{HTTP:Accept-Language} ^fr [NC]
+RewriteRule ^ /fr/ [R=302,L]
+
+RewriteCond %{REQUEST_URI} ^/?$
+RewriteRule ^ /de/ [R=302,L]
+
+# ── Custom 404 page ──────────────────────────────────────────────────────────
+ErrorDocument 404 /404.html

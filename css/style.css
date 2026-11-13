@@ -1,0 +1,381 @@
+/* ==========================================================================
+   ValaisIT.ch — one stylesheet, no framework, no build step
+   1. Tokens  2. Reset + base  3. Shared pieces  4. Header  5. Hero
+   6. Duo (marmot + sheep)  7. Also  8. Ways  9. About  10. Contact
+   11. Tear-off strip + footer  12. Motion  13. Breakpoints
+   ========================================================================== */
+
+/* ============ 1. TOKENS ============ */
+:root {
+  --paper: #F5F3EE;   /* notice-board paper */
+  --white: #FFFFFF;
+  --ink:   #16171D;   /* text + contact panel */
+  --coal:  #24262F;   /* form panel on ink */
+  --red:   #C8102E;   /* Valais red */
+  --red-d: #A50D26;
+  --muted: #555761;
+  --rule:  rgba(22, 23, 29, 0.16);
+
+  --display: 'Space Grotesk', system-ui, sans-serif;
+  --body:    'Inter', system-ui, sans-serif;
+
+  --wrap: 1160px;
+  --gutter: 20px;
+  --radius: 28px;
+}
+
+/* ============ 2. RESET + BASE ============ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+body {
+  font-family: var(--body);
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; }
+img, svg { display: block; max-width: 100%; }
+button, input, textarea { font: inherit; color: inherit; }
+:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px; }
+
+/* ============ 3. SHARED PIECES ============ */
+.wrap {
+  width: 100%;
+  max-width: calc(var(--wrap) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.band { padding-block: clamp(56px, 8vw, 104px); }
+.band-rule { border-top: 1px solid var(--rule); }
+
+.red { color: var(--red); }
+
+/* small tracked label — taken straight from the printed notice */
+.label {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.h2 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 3.6vw, 2.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  max-width: 20em;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 12px 24px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 1.0625rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .15s ease, color .15s ease, border-color .15s ease;
+}
+.btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+.btn-solid { background: var(--ink); color: var(--white); }
+.btn-line  { background: transparent; color: var(--ink); }
+.btn-red   { background: var(--red); border-color: var(--red); color: var(--white); }
+@media (hover: hover) {
+  .btn-solid:hover { background: var(--red); border-color: var(--red); }
+  .btn-line:hover  { background: var(--ink); color: var(--white); }
+  .btn-red:hover   { background: var(--red-d); border-color: var(--red-d); }
+}
+
+/* the red "first diagnosis free" sticker */
+.sticker {
+  display: inline-block;
+  padding: 14px 22px;
+  background: var(--red);
+  color: var(--white);
+  border-radius: 14px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2vw, 1.4375rem);
+  line-height: 1.2;
+  text-align: center;
+  transform: rotate(-4deg);
+}
+
+/* ============ 4. HEADER ============ */
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-block: 20px;
+}
+.brand {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: -0.01em;
+  text-decoration: none;
+}
+.header-tools { display: flex; align-items: center; gap: 18px; }
+.lang-switch {
+  display: flex;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  overflow: hidden;
+  font-weight: 700;
+  font-size: 0.875rem;
+}
+.lang-switch a {
+  padding: 6px 12px;
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+.lang-switch a[aria-current="true"] { background: var(--ink); color: var(--white); }
+.lang-switch a:focus-visible { outline-offset: -3px; }
+.header-phone {
+  display: none;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.125rem;
+  text-decoration: none;
+  white-space: nowrap;
+}
+@media (hover: hover) { .header-phone:hover { color: var(--red); } }
+
+/* ============ 5. HERO ============ */
+.hero { padding-top: clamp(20px, 4vw, 48px); padding-bottom: clamp(36px, 5vw, 64px); }
+.hero .label { display: block; margin-bottom: 14px; }
+.hero h1 {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(2.5rem, 10.6vw, 6.25rem);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  hyphens: manual;
+}
+.hero-row {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  margin-top: clamp(20px, 3vw, 32px);
+}
+.lede {
+  font-size: clamp(1.1875rem, 2.3vw, 1.625rem);
+  line-height: 1.35;
+  max-width: 31em;
+}
+.cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.hero .sticker { align-self: flex-start; margin-left: 6px; }
+
+/* ============ 6. DUO ============ */
+.duo { display: grid; gap: 40px 28px; }
+.duo-figure {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  aspect-ratio: 8 / 7;
+  background: #9CC3E6;
+}
+.duo-figure img { width: 100%; height: 100%; object-fit: cover; }
+.duo-figure .pos-marmot { object-position: 50% 22%; }
+.duo-figure .pos-sheep  { object-position: 50% 30%; }
+.duo-figure .label {
+  position: absolute;
+  top: 18px; left: 18px;
+  padding: 8px 16px;
+  background: var(--white);
+  border-radius: 999px;
+}
+.duo h2 {
+  margin-top: 20px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.5rem, 2.8vw, 2.125rem);
+  line-height: 1.12;
+  letter-spacing: -0.015em;
+  max-width: 14em;
+}
+.duo p { margin-top: 10px; max-width: 26em; font-size: 1.125rem; }
+
+/* ============ 7. ALSO ============ */
+.also { display: grid; gap: 24px; }
+.also-list { list-style: none; display: grid; gap: 28px 32px; }
+.also-list li { max-width: 30em; }
+.pill {
+  display: inline-block;
+  padding: 7px 18px;
+  border: 2px solid var(--ink);
+  border-radius: 999px;
+  background: var(--white);
+  font-weight: 600;
+  font-size: 1.0625rem;
+}
+.also-list p { margin-top: 10px; color: var(--muted); }
+
+/* ============ 8. WAYS ============ */
+.ways-list { list-style: none; display: grid; gap: 0 32px; margin-top: clamp(28px, 4vw, 48px); }
+.ways-list li {
+  display: grid;
+  grid-template-columns: 36px 1fr;
+  gap: 4px 16px;
+  padding-block: 20px;
+  border-top: 2px solid var(--ink);
+}
+.ways-list svg { width: 28px; height: 28px; grid-row: span 2; margin-top: 2px; }
+.ways-list h3 { font-family: var(--display); font-weight: 700; font-size: 1.25rem; line-height: 1.2; }
+.ways-list p { color: var(--muted); grid-column: 2; }
+
+/* ============ 9. ABOUT ============ */
+.about { display: grid; gap: 24px; }
+.about-text { max-width: 36em; font-size: 1.125rem; }
+.about-text p + p { margin-top: 1em; }
+.about-text a { text-decoration-color: var(--red); text-decoration-thickness: 2px; text-underline-offset: 3px; }
+
+/* ============ 10. CONTACT ============ */
+.contact-panel {
+  display: grid;
+  gap: 36px;
+  padding: clamp(24px, 4vw, 48px);
+  background: var(--ink);
+  color: var(--white);
+  border-radius: var(--radius);
+}
+.contact-modes { color: rgba(255, 255, 255, 0.82); }
+.contact-name {
+  margin-top: 6px;
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: clamp(1.75rem, 4.4vw, 2.75rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+.contact-name a { text-decoration: none; white-space: nowrap; }
+@media (hover: hover) { .contact-name a:hover { text-decoration: underline; text-decoration-color: var(--red); } }
+.contact-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+.contact-panel .btn-line { border-color: var(--white); color: var(--white); }
+@media (hover: hover) { .contact-panel .btn-line:hover { background: var(--white); color: var(--ink); } }
+.contact-panel :focus-visible { outline-color: var(--white); }
+.contact-note { margin-top: 28px; }
+.contact-note .sticker { font-size: 1.125rem; }
+
+.contact-form {
+  display: grid;
+  gap: 16px;
+  padding: clamp(20px, 3vw, 32px);
+  background: var(--coal);
+  border-radius: 20px;
+}
+.contact-form h3 { font-family: var(--display); font-weight: 700; font-size: 1.375rem; }
+.field { display: grid; gap: 6px; }
+.field label { font-weight: 600; font-size: 0.9375rem; }
+.field input, .field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  background: var(--white);
+  color: var(--ink);
+  border: 2px solid transparent;
+  border-radius: 12px;
+}
+.field textarea { min-height: 120px; resize: vertical; }
+.field input:focus-visible, .field textarea:focus-visible { outline: none; border-color: var(--red); box-shadow: 0 0 0 3px rgba(255,255,255,.5); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.form-status { min-height: 1.5em; font-weight: 600; }
+.form-status[data-state="ok"]    { color: #9BE3B0; }
+.form-status[data-state="error"] { color: #FFB3BE; }
+.contact-form .btn { justify-self: start; }
+.contact-form .btn[disabled] { opacity: .6; cursor: progress; }
+
+/* ============ 11. TEAR-OFF STRIP + FOOTER ============ */
+.tearoff {
+  display: flex;
+  flex-wrap: wrap;
+  height: 196px;
+  overflow: hidden;
+  border-top: 2px dashed var(--ink);
+  background: var(--white);
+}
+.tearoff a {
+  flex: 1 0 92px;
+  height: 196px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 2px dashed var(--ink);
+  text-decoration: none;
+  transform-origin: 50% 0;
+  transition: transform .2s ease, background-color .2s ease;
+}
+.tearoff a:last-child { border-right: 0; }
+.tearoff span {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  line-height: 1.25;
+  white-space: nowrap;
+}
+.tearoff b { font-family: var(--display); font-weight: 700; font-size: 0.9375rem; color: var(--red); }
+.tearoff strong { font-family: var(--display); font-weight: 700; font-size: 1.0625rem; }
+.tearoff small { font-size: 0.8125rem; }
+@media (hover: hover) {
+  .tearoff a:hover { transform: rotate(2.5deg) translateY(8px); background: var(--paper); }
+}
+.tearoff a:focus-visible { outline-offset: -5px; }
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding-block: 22px;
+  font-size: 0.9375rem;
+  color: var(--muted);
+}
+.site-footer a { text-underline-offset: 3px; }
+
+/* ============ 12. MOTION ============ */
+/* one moment only: the sticker gets slapped onto the page */
+@keyframes stamp {
+  0%   { opacity: 0; transform: rotate(-16deg) scale(1.7); }
+  70%  { opacity: 1; transform: rotate(-3deg) scale(0.96); }
+  100% { opacity: 1; transform: rotate(-4deg) scale(1); }
+}
+.hero .sticker { animation: stamp .45s cubic-bezier(.2, .9, .3, 1.2) .6s both; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .hero .sticker { animation: none; }
+  .tearoff a, .btn { transition: none; }
+  .tearoff a:hover { transform: none; }
+}
+
+/* ============ 13. BREAKPOINTS ============ */
+@media (min-width: 640px) {
+  :root { --gutter: 32px; }
+  .header-phone { display: block; }
+  .duo { grid-template-columns: 1fr 1fr; }
+  .also-list { grid-template-columns: 1fr 1fr; }
+  .ways-list { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 900px) {
+  .hero-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
+  .hero .sticker { align-self: flex-end; margin: 0 12px 10px 0; flex-shrink: 0; }
+  .also { grid-template-columns: 180px 1fr; }
+  .also > .label { padding-top: 12px; }
+  .about { grid-template-columns: 1fr 1fr; gap: 48px; }
+  .contact-panel { grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
+}
+@media (min-width: 1024px) {
+  .ways-list { grid-template-columns: repeat(4, 1fr); }
+  .ways-list li { grid-template-columns: 1fr; }
+  .ways-list svg { grid-row: auto; margin-bottom: 8px; }
+  .ways-list p { grid-column: 1; }
+}
