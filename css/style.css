@@ -1,8 +1,8 @@
 /* ==========================================================================
    ValaisIT.ch — one stylesheet, no framework, no build step
    1. Tokens  2. Reset + base  3. Shared pieces  4. Header  5. Hero
-   6. Duo (marmot + sheep)  7. Also  8. Ways  9. About  10. Contact
-   11. Tear-off strip + footer  12. Motion  13. Breakpoints
+   6. Trio (ibex, marmot, sheep)  7. Also  8. Ways  9. About  10. Contact
+   11. Footer  12. Motion  13. Breakpoints
    ========================================================================== */
 
 /* ============ 1. TOKENS ============ */
@@ -174,35 +174,31 @@ button, input, textarea { font: inherit; color: inherit; }
 .cta-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 .hero .sticker { align-self: flex-start; margin-left: 6px; }
 
-/* ============ 6. DUO ============ */
-.duo { display: grid; gap: 32px 20px; }
-.duo-figure {
-  position: relative;
-  border-radius: var(--radius);
+/* ============ 6. TRIO (ibex, marmot, sheep) ============ */
+/* Below 760px each card is a row: picture left, text right. From 760px: three columns. */
+.trio { display: grid; gap: 28px; }
+.trio article {
+  display: grid;
+  grid-template-columns: 42% 1fr;
+  gap: 16px;
+  align-items: center;
+}
+.trio-figure {
+  border-radius: 20px;
   overflow: hidden;
-  aspect-ratio: 8 / 7;
+  aspect-ratio: 3 / 4;
   background: #9CC3E6;
 }
-.duo-figure img { width: 100%; height: 100%; object-fit: cover; }
-.duo-figure .pos-marmot { object-position: 50% 48%; }
-.duo-figure .pos-sheep  { object-position: 50% 56%; }
-.duo-figure .label {
-  position: absolute;
-  top: 14px; left: 14px;
-  padding: 6px 14px;
-  background: var(--white);
-  border-radius: 999px;
-}
-.duo h2 {
-  margin-top: 16px;
+.trio-figure img { width: 100%; height: 100%; object-fit: cover; }
+.trio .label { display: block; margin-bottom: 8px; font-size: 0.75rem; }
+.trio h2 {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(1.1875rem, 2.2vw, 1.625rem);
-  line-height: 1.12;
+  font-size: clamp(1.125rem, 2.1vw, 1.5rem);
+  line-height: 1.15;
   letter-spacing: -0.015em;
-  max-width: 14em;
 }
-.duo p { margin-top: 8px; max-width: 26em; }
+.trio p { margin-top: 8px; }
 
 /* ============ 7. ALSO ============ */
 .also { display: grid; gap: 24px; }
@@ -292,45 +288,7 @@ button, input, textarea { font: inherit; color: inherit; }
 .contact-form .btn { justify-self: start; }
 .contact-form .btn[disabled] { opacity: .6; cursor: progress; }
 
-/* ============ 11. TEAR-OFF STRIP + FOOTER ============ */
-.tearoff {
-  display: flex;
-  flex-wrap: wrap;
-  height: 176px;
-  overflow: hidden;
-  border-top: 2px dashed var(--ink);
-  background: var(--white);
-}
-.tearoff a {
-  flex: 1 0 84px;
-  height: 176px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-right: 2px dashed var(--ink);
-  text-decoration: none;
-  transform-origin: 50% 0;
-  transition: transform .2s ease, background-color .2s ease;
-}
-.tearoff a:last-child { border-right: 0; }
-.tearoff span {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2px;
-  line-height: 1.25;
-  white-space: nowrap;
-}
-.tearoff b { font-family: var(--display); font-weight: 700; font-size: 0.875rem; color: var(--red); }
-.tearoff strong { font-family: var(--display); font-weight: 700; font-size: 1rem; }
-.tearoff small { font-size: 0.75rem; }
-@media (hover: hover) {
-  .tearoff a:hover { transform: rotate(2.5deg) translateY(8px); background: var(--paper); }
-}
-.tearoff a:focus-visible { outline-offset: -5px; }
-
+/* ============ 11. FOOTER ============ */
 .site-footer {
   display: flex;
   flex-wrap: wrap;
@@ -352,8 +310,7 @@ button, input, textarea { font: inherit; color: inherit; }
   letter-spacing: -0.025em;
 }
 .hero .label span { white-space: nowrap; }
-.soon-duo h2 { max-width: none; }
-.soon-duo h2 span { display: block; color: var(--muted); text-wrap: balance; }
+.soon-trio h2 span { display: block; color: var(--muted); text-wrap: balance; }
 .soon-close {
   font-family: var(--display);
   font-weight: 700;
@@ -374,22 +331,23 @@ button, input, textarea { font: inherit; color: inherit; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .hero .sticker { animation: none; }
-  .tearoff a, .btn { transition: none; }
-  .tearoff a:hover { transform: none; }
+  .btn { transition: none; }
 }
 
 /* ============ 13. BREAKPOINTS ============ */
-@media (min-width: 480px) {
-  .duo { grid-template-columns: 1fr 1fr; }
-}
 @media (min-width: 640px) {
   :root { --gutter: 32px; }
   .header-phone { display: block; }
-  .duo { gap: 36px 28px; }
   .also-list { grid-template-columns: 1fr 1fr; }
   .ways-list { grid-template-columns: 1fr 1fr; }
 }
+@media (min-width: 760px) {
+  .trio { grid-template-columns: repeat(3, 1fr); }
+  .trio article { grid-template-columns: 1fr; align-content: start; }
+  .trio-figure { border-radius: 24px; }
+}
 @media (min-width: 900px) {
+  .also-list { grid-template-columns: repeat(3, 1fr); }
   .hero-row { flex-direction: row; align-items: flex-end; justify-content: space-between; }
   .hero .sticker { align-self: flex-end; margin: 0 12px 10px 0; flex-shrink: 0; }
   .also { grid-template-columns: 180px 1fr; }

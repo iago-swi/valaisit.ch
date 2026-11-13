@@ -15,7 +15,7 @@ Static, bilingual (DE / FR), no framework, no build step. Pure HTML and CSS, a f
 ├── assets/         # Favicon
 ├── css/style.css   # Single stylesheet, design tokens at the top
 ├── js/script.js    # Sends the form in the background
-├── images/         # Sheep, marmot, Open Graph image
+├── images/         # Ibex, marmot, sheep, Open Graph image
 └── de/  fr/        # One folder per language, mirrored content
 ```
 
