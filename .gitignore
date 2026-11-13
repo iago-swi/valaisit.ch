@@ -1,4 +1,7 @@
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local only: Claude settings and source material (original PNGs, notice PDFs)
 .claude/
+resources/
